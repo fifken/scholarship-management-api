@@ -9,8 +9,10 @@ import java.lang.annotation.*;
 @Constraint(validatedBy = OpenDateBeforeCloseDateValidator.class)
 @Target({ElementType.TYPE})
 @Retention(RetentionPolicy.RUNTIME)
-public @interface OpenDateBeforeCloseDate {
+public @interface OpennDateBeforeCloseDate {
     String message() default "openDate must be before closeDate";
     Class<?>[] groups() default {};
     Class<? extends Payload>[] payload() default {};
 }
+
+//explore penggunaannya gmn

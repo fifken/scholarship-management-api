@@ -11,7 +11,7 @@ Sistem manajemen beasiswa dan pendaftaran mahasiswa.
 | Method | Endpoint                        | Description            |
 | ------ | ------------------------------- | ---------------------- |
 | POST   | `/scholarships`                 | Tambah beasiswa        |
-| GET    | `/scholarships`x`                 | List beasiswa          |
+| GET    | `/scholarships`                 | List beasiswa          |
 | POST   | `/applicants`                   | Daftar beasiswa        |
 | GET    | `/applicants`                   | List pendaftar         |
 | GET    | `/applicants/{id}`              | Detail pendaftar       |
