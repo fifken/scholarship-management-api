@@ -23,6 +23,7 @@ public class Applicant {
     private Long scholarshipId;
 
     @NotBlank
+    @Size(min = 3)
     @JsonProperty("applicant_name")
     private String applicantName;
 
