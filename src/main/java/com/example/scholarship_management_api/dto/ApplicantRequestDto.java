@@ -20,5 +20,4 @@ public class ApplicantRequestDto {
     @DecimalMax("4.00")
     private Double gpa;
 
-    // Getter & Setter
 }

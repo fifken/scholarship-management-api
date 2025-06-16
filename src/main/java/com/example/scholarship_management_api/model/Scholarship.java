@@ -1,20 +1,19 @@
 package com.example.scholarship_management_api.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.Future;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
+import lombok.Builder;
 import lombok.Data;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @Data
-//@OpenDateBeforeCloseDate
+@Builder
 public class Scholarship {
 
     @Id
@@ -40,5 +39,7 @@ public class Scholarship {
 
     private Boolean isDeleted = false;
 
-    
+//    @OneToMany(mappedBy = "scholarship", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+//    private List<Applicant> applicants;
+
 }

@@ -1,6 +1,8 @@
 package com.example.scholarship_management_api.controller;
 
 
+import com.example.scholarship_management_api.dto.ScholarshipRequestDto;
+import com.example.scholarship_management_api.dto.ScholarshipResponseDto;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,13 +30,13 @@ public class ScholarshipController {
     }
 
     @PostMapping
-    public ResponseEntity<Scholarship> createScholarship(@RequestBody @Validated Scholarship scholarship) {
-        Scholarship savedScholarship = scholarshipService.addScholarship(scholarship);
+    public ResponseEntity<ScholarshipResponseDto> createScholarship(@RequestBody @Validated ScholarshipRequestDto dto) {
+        ScholarshipResponseDto savedScholarship = scholarshipService.createScholarship(dto);
         return ResponseEntity.ok(savedScholarship);
     }
 
     @GetMapping
-    public ResponseEntity<List<Scholarship>> getAllScholarships() {
+    public ResponseEntity<List<ScholarshipResponseDto>> getAllScholarships() {
         return ResponseEntity.ok(scholarshipService.getAllScholarships());
     }
 
