@@ -99,7 +99,7 @@ public class ApplicantServiceTest {
             applicantService.getApplicantById(1L);
         });
     }
-//errornya lebih spesifik errornya apa (asset thrownya)
+    //errornya lebih spesifik errornya apa (asset thrownya)
     @Test
     void testUpdateApplicant_Success() {
         Applicant existing = new Applicant();

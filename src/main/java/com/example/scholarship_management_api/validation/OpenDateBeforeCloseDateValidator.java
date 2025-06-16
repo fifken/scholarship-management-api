@@ -6,7 +6,7 @@ import jakarta.validation.ConstraintValidatorContext;
 
 import java.time.LocalDate;
 
-public class OpenDateBeforeCloseDateValidator implements ConstraintValidator<OpenDateBeforeCloseDate, ScholarshipRequestDto> {
+public class OpenDateBeforeCloseDateValidator implements ConstraintValidator<OpennDateBeforeCloseDate, ScholarshipRequestDto> {
 
     @Override
     public boolean isValid(ScholarshipRequestDto dto, ConstraintValidatorContext context) {
