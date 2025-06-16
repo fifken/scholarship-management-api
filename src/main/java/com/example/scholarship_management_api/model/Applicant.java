@@ -1,12 +1,11 @@
 package com.example.scholarship_management_api.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
+import lombok.Builder;
 import lombok.Data;
+import org.hibernate.annotations.NotFound;
 
 import java.time.LocalDate;
 
@@ -18,7 +17,6 @@ public class Applicant {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotNull
     @JsonProperty("scholarship_id")
     private Long scholarshipId;
 
@@ -36,4 +34,5 @@ public class Applicant {
     private LocalDate deletedAt;
 
     private Boolean isDeleted = false;
+
 }
