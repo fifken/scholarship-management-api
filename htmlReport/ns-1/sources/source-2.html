@@ -1,0 +1,169 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"> 
+  <title>Coverage Report > ScholarshipService</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.example.scholarship_management_api.service</a>
+</div>
+
+<h1>Coverage Summary for Class: ScholarshipService (com.example.scholarship_management_api.service)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">ScholarshipService</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (6/6)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (29/29)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package com.example.scholarship_management_api.service;
+&nbsp;
+&nbsp;import com.example.scholarship_management_api.dto.ScholarshipRequestDto;
+&nbsp;import com.example.scholarship_management_api.dto.ScholarshipResponseDto;
+&nbsp;import com.example.scholarship_management_api.model.Applicant;
+&nbsp;import com.example.scholarship_management_api.model.Scholarship;
+&nbsp;import com.example.scholarship_management_api.repository.ApplicantRepository;
+&nbsp;import com.example.scholarship_management_api.repository.ScholarshipRepository;
+&nbsp;import org.springframework.stereotype.Service;
+&nbsp;
+&nbsp;import java.time.LocalDate;
+&nbsp;import java.util.List;
+&nbsp;import java.util.Optional;
+&nbsp;
+&nbsp;@Service
+&nbsp;public class ScholarshipService {
+&nbsp;    private final ScholarshipRepository scholarshipRepository;
+&nbsp;    private final ApplicantRepository applicantRepository;
+&nbsp;
+<b class="fc">&nbsp;    public ScholarshipService(ScholarshipRepository scholarshipRepository, ApplicantRepository applicantRepository) {</b>
+<b class="fc">&nbsp;        this.scholarshipRepository = scholarshipRepository;</b>
+<b class="fc">&nbsp;        this.applicantRepository = applicantRepository;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public List&lt;ScholarshipResponseDto&gt; getAllScholarships() {
+<b class="fc">&nbsp;        return scholarshipRepository.findAll().stream()</b>
+<b class="fc">&nbsp;                .map(this::toResponseDto)</b>
+<b class="fc">&nbsp;                .toList();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public ScholarshipResponseDto createScholarship(ScholarshipRequestDto dto) {
+<b class="fc">&nbsp;        Scholarship scholarship = Scholarship.builder()</b>
+<b class="fc">&nbsp;                .scholarshipName(dto.getScholarshipName())</b>
+<b class="fc">&nbsp;                .openDate(dto.getOpenDate())</b>
+<b class="fc">&nbsp;                .closeDate(dto.getCloseDate())</b>
+<b class="fc">&nbsp;                .createdAt(LocalDate.now())</b>
+<b class="fc">&nbsp;                .updatedAt(LocalDate.now())</b>
+<b class="fc">&nbsp;                .isDeleted(false)</b>
+<b class="fc">&nbsp;                .build();</b>
+<b class="fc">&nbsp;        Scholarship saved = scholarshipRepository.save(scholarship);</b>
+<b class="fc">&nbsp;        return toResponseDto(saved);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public Optional&lt;ScholarshipResponseDto&gt; getScholarshipById(Long id) {
+<b class="fc">&nbsp;        return scholarshipRepository.findById(id)</b>
+<b class="fc">&nbsp;                .map(this::toResponseDto);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public List&lt;Applicant&gt; getApplicantsByScholarshipId(Long id) {
+<b class="fc">&nbsp;        return applicantRepository.findAllByScholarshipId(id);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    private ScholarshipResponseDto toResponseDto(Scholarship scholarship) {
+<b class="fc">&nbsp;        return ScholarshipResponseDto.builder()</b>
+<b class="fc">&nbsp;                .id(scholarship.getId())</b>
+<b class="fc">&nbsp;                .scholarshipName(scholarship.getScholarshipName())</b>
+<b class="fc">&nbsp;                .openDate(scholarship.getOpenDate())</b>
+<b class="fc">&nbsp;                .closeDate(scholarship.getCloseDate())</b>
+<b class="fc">&nbsp;                .createdAt(scholarship.getCreatedAt())</b>
+<b class="fc">&nbsp;                .updatedAt(scholarship.getUpdatedAt())</b>
+<b class="fc">&nbsp;                .deletedAt(scholarship.getDeletedAt())</b>
+<b class="fc">&nbsp;                .isDeleted(scholarship.getIsDeleted())</b>
+<b class="fc">&nbsp;                .build();</b>
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2025-06-16 16:13</div>
+</div>
+</body>
+</html>
