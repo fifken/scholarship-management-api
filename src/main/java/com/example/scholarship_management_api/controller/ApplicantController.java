@@ -15,6 +15,7 @@ import java.util.List;
 @RequestMapping("/applicants")
 public class ApplicantController {
 
+
     @Autowired
     private ApplicantService applicantService;
 
