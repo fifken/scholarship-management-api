@@ -1,5 +1,6 @@
 package com.example.scholarship_management_api.service;
 
+import com.example.scholarship_management_api.model.Applicant;
 import com.example.scholarship_management_api.model.Scholarship;
 import com.example.scholarship_management_api.repository.ScholarshipRepository;
 
@@ -23,5 +24,10 @@ public class ScholarshipService {
 
     public Optional<Scholarship> getScholarshipById(Long id) { // using Optional for better null handling
         return scholarshipRepository.findById(id);
+    }
+
+    public List<Applicant> getApplicantsByScholarshipId(Long id) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getApplicantsByScholarshipId'");
     }
 }
