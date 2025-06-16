@@ -8,6 +8,7 @@ import jakarta.persistence.Id;
 import jakarta.validation.constraints.Future;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import lombok.Data;
 import lombok.Generated;
 
@@ -23,6 +24,7 @@ public class Scholarship {
     private Long id;
 
     @NotNull
+    @Size(min = 3)
     @JsonProperty("scholarship_name")
     private String scholarshipName;
 
